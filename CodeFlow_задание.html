@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>CodeFlow — приветственный блок и цветовые палитры</title>
+<style>
+:root{--bg:#080d18;--panel:#101a2b;--text:#f4f7fb;--muted:#a6b3c7;--accent:#6ee7b7;--blue:#60a5fa}
+*{box-sizing:border-box}body{margin:0;background:#f3f5f9;color:#182235;font-family:Inter,Arial,sans-serif}
+.wrap{max-width:1180px;margin:auto;padding:30px 24px 60px}
+.hero{min-height:570px;border-radius:28px;overflow:hidden;background:radial-gradient(circle at 80% 45%,#173c55 0,#101c30 32%,#080d18 72%);color:var(--text);padding:28px 5.5%;position:relative}
+nav{display:flex;align-items:center;gap:28px;justify-content:space-between;border-bottom:1px solid #ffffff1c;padding-bottom:24px}
+.logo{font-size:23px;font-weight:800;letter-spacing:-1px}.logo span{color:var(--accent)}.links{display:flex;gap:26px;color:#bdc9d9;font-size:14px}.navbtn{border:1px solid #52657d;padding:11px 16px;border-radius:10px;color:white;font-size:13px}
+.hero-grid{display:grid;grid-template-columns:1.03fr .97fr;gap:35px;align-items:center;padding-top:58px}
+.eyebrow{display:inline-flex;align-items:center;gap:8px;background:#6ee7b71a;border:1px solid #6ee7b74a;color:#9bf2cf;border-radius:99px;padding:8px 12px;font-size:12px;font-weight:700;letter-spacing:.4px}
+h1{font-size:clamp(38px,5vw,62px);line-height:1.04;letter-spacing:-2.7px;margin:22px 0 18px;max-width:570px}h1 em{font-style:normal;color:var(--accent)}
+.desc{font-size:17px;line-height:1.65;color:#b9c5d6;max-width:500px;margin:0 0 28px}
+.actions{display:flex;gap:12px;flex-wrap:wrap}.primary,.secondary{padding:14px 19px;border-radius:11px;text-decoration:none;font-weight:700;font-size:14px}.primary{background:var(--accent);color:#092018;box-shadow:0 8px 30px #6ee7b72a}.secondary{border:1px solid #52657d;color:#eef5ff}
+.trust{display:flex;gap:18px;align-items:center;color:#8fa1b8;font-size:12px;margin-top:25px}.avatars{display:flex}.avatar{width:27px;height:27px;border-radius:50%;border:2px solid #101c30;background:linear-gradient(135deg,#60a5fa,#a78bfa);margin-left:-7px}.avatar:first-child{margin-left:0;background:linear-gradient(135deg,#6ee7b7,#60a5fa)}.avatar:nth-child(3){background:linear-gradient(135deg,#fbbf24,#f472b6)}
+.visual{position:relative;min-height:340px;display:flex;align-items:center;justify-content:center}
+.glow{position:absolute;width:310px;height:310px;border-radius:50%;background:#31d6a51b;filter:blur(30px)}
+.editor{position:relative;width:min(100%,440px);background:#0c1422;border:1px solid #33445b;border-radius:17px;box-shadow:0 25px 70px #0007;transform:rotate(2deg);overflow:hidden}
+.editor-top{height:43px;border-bottom:1px solid #26354a;display:flex;align-items:center;padding:0 15px;gap:7px;color:#90a4bc;font-size:11px}.dot{width:8px;height:8px;border-radius:50%;background:#f87171}.dot:nth-child(2){background:#fbbf24}.dot:nth-child(3){background:#6ee7b7}.filename{margin-left:12px}
+.editor-body{padding:20px 22px 24px;font:13px/1.9 ui-monospace,monospace;color:#9fb2ca}.line{display:flex;gap:18px}.num{color:#50617a;width:14px}.purple{color:#c4b5fd}.green{color:#86efac}.blue{color:#7dd3fc}.yellow{color:#fde68a}
+.task{position:absolute;right:-5px;bottom:15px;background:#17263a;border:1px solid #3b536b;padding:14px 16px;border-radius:13px;box-shadow:0 12px 35px #0005;width:205px;color:#e8f1fc;font-size:12px}.task strong{display:block;margin-bottom:8px;font-size:13px}.check{color:#6ee7b7;margin-right:7px}
+.benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:25px}.benefit{background:#ffffff0a;border:1px solid #ffffff17;border-radius:13px;padding:14px}.benefit b{display:block;font-size:13px;margin:7px 0 4px}.benefit span{font-size:12px;line-height:1.5;color:#9eafc4}.ico{color:#6ee7b7;font-size:18px}
+.notes{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin:22px 0 45px}.note{background:white;border:1px solid #e0e5ee;border-radius:16px;padding:20px}.note h3{margin:0 0 12px;font-size:17px}.note p{margin:7px 0;color:#4d5b70;font-size:14px;line-height:1.5}.note strong{color:#172238}
+.palette-title{margin:0 0 8px;font-size:29px;letter-spacing:-.8px}.sub{margin:0 0 22px;color:#66748a}.palettes{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.palette{background:#fff;border:1px solid #dfe4ec;border-radius:16px;padding:17px}.palette h3{margin:0 0 5px;font-size:16px}.palette p{margin:0 0 13px;color:#68758a;font-size:12px}.swatches{display:flex;gap:8px}.swatch{height:70px;flex:1;border-radius:9px;display:flex;align-items:end;padding:7px;color:white;font-size:10px;font-weight:700;text-shadow:0 1px 4px #0008}.pick{border-color:#65b99a;box-shadow:0 0 0 2px #65b99a2a}.tag{display:inline-block;margin-top:10px;background:#e2f9ed;color:#16764e;padding:5px 8px;border-radius:6px;font-size:11px;font-weight:700}
+@media(max-width:760px){.hero-grid{grid-template-columns:1fr;padding-top:38px}.visual{min-height:280px}.links{display:none}.hero{padding:22px}.benefits{grid-template-columns:1fr}.notes,.palettes{grid-template-columns:1fr}.task{right:0}.wrap{padding:14px}}
+</style>
+</head>
+<body><main class="wrap">
+<section class="hero">
+<nav><div class="logo">Code<span>Flow</span> ✳</div><div class="links"><span>Возможности</span><span>Для команд</span><span>Тарифы</span></div><a class="navbtn" href="#palettes">Посмотреть палитры ↗</a></nav>
+<div class="hero-grid"><div>
+<div class="eyebrow">✦ ПРОСТРАНСТВО ДЛЯ КОМАНДНОГО КОДА</div>
+<h1>Создавайте лучше.<br><em>Вместе.</em></h1>
+<p class="desc">CodeFlow объединяет код, задачи и командное общение в одном пространстве. Меньше переключений — больше готовых проектов.</p>
+<div class="actions"><a class="primary" href="#palettes">Начать работу&nbsp; →</a><a class="secondary" href="#benefits">Как это работает</a></div>
+<div class="trust"><div class="avatars"><i class="avatar"></i><i class="avatar"></i><i class="avatar"></i></div><span>Один рабочий процесс для всей команды</span></div>
+</div><div class="visual"><div class="glow"></div><div class="editor"><div class="editor-top"><i class="dot"></i><i class="dot"></i><i class="dot"></i><span class="filename">team-dashboard.js</span></div><div class="editor-body">
+<div class="line"><span class="num">1</span><span><span class="purple">const</span> project = {</span></div>
+<div class="line"><span class="num">2</span><span>&nbsp;&nbsp;name: <span class="green">'New experience'</span>,</span></div>
+<div class="line"><span class="num">3</span><span>&nbsp;&nbsp;team: [<span class="yellow">'design'</span>, <span class="yellow">'dev'</span>],</span></div>
+<div class="line"><span class="num">4</span><span>&nbsp;&nbsp;status: <span class="green">'in progress'</span>,</span></div>
+<div class="line"><span class="num">5</span><span>&nbsp;&nbsp;collaboration: <span class="blue">true</span></span></div>
+<div class="line"><span class="num">6</span><span>};</span></div><br>
+<div class="line"><span class="num">7</span><span><span class="purple">await</span> team.<span class="blue">buildTogether</span>(); <span class="green">// ship it!</span></span></div>
+</div></div><div class="task"><strong>✓ Спринт команды</strong><div><span class="check">●</span>Макет интерфейса</div><div><span class="check">●</span>Проверка кода</div><div style="margin-top:9px;background:#2a3d50;height:5px;border-radius:9px"><div style="width:72%;height:5px;background:#6ee7b7;border-radius:9px"></div></div><div style="margin-top:6px;color:#9eafc4">Прогресс проекта · 72%</div></div></div></div>
+<div class="benefits" id="benefits"><div class="benefit"><div class="ico">⌘</div><b>Код в одном месте</b><span>Работайте над проектом без хаоса из вкладок.</span></div><div class="benefit"><div class="ico">↗</div><b>Команда на связи</b><span>Обсуждайте решения и быстро делитесь результатами.</span></div><div class="benefit"><div class="ico">◷</div><b>Понятный прогресс</b><span>Следите за задачами и сроками всей команды.</span></div></div>
+</section>
+<section class="notes"><div class="note"><h3>Задание 1 — композиция</h3><p><strong>1. Главный объект:</strong> заголовок «Создавайте лучше. Вместе.»</p><p><strong>2. Второстепенные элементы:</strong> навигация, описание, кнопки, карточки преимуществ и иллюстрация редактора.</p><p><strong>3. Точка первого внимания:</strong> крупный заголовок и мятный акцент на слове «Вместе».</p><p><strong>4. Движение взгляда:</strong> логотип → заголовок → описание → кнопки → иллюстрация → преимущества.</p><p><strong>5. Принцип:</strong> визуальная иерархия и асимметричный баланс.</p></div><div class="note"><h3>Обоснование дизайна</h3><p>Тёмный фон создаёт ассоциацию с рабочей средой разработчиков. Мятный цвет выделяет действия, а сине-фиолетовые оттенки поддерживают технологичность.</p><p>Кнопка «Начать работу» — основная, «Как это работает» — вторичная. Иллюстрация редактора сразу объясняет тему сайта.</p></div></section>
+<section id="palettes"><h2 class="palette-title">Задание 2 — цветовые палитры</h2><p class="sub">Шесть цветовых схем. Выберите одну и примените её к сайту.</p><div class="palettes">
+<div class="palette"><h3>1. Комплементарная</h3><p>Синий и оранжевый — цвета напротив на цветовом круге.</p><div class="swatches"><div class="swatch" style="background:#2563eb">#2563EB</div><div class="swatch" style="background:#f97316">#F97316</div><div class="swatch" style="background:#f8fafc;color:#334155;text-shadow:none">#F8FAFC</div></div></div>
+<div class="palette"><h3>2. Контрастная триада</h3><p>Три ярких, выразительных цвета для динамичного интерфейса.</p><div class="swatches"><div class="swatch" style="background:#ef4444">#EF4444</div><div class="swatch" style="background:#14b8a6">#14B8A6</div><div class="swatch" style="background:#a3e635;color:#24320a;text-shadow:none">#A3E635</div></div></div>
+<div class="palette"><h3>3. Классическая триада</h3><p>Красный, жёлтый и синий — равновесие трёх основных цветов.</p><div class="swatches"><div class="swatch" style="background:#dc2626">#DC2626</div><div class="swatch" style="background:#facc15;color:#352800;text-shadow:none">#FACC15</div><div class="swatch" style="background:#2563eb">#2563EB</div></div></div>
+<div class="palette"><h3>4. Аналоговая триада</h3><p>Соседние оттенки зелёного и синего — мягкий переход.</p><div class="swatches"><div class="swatch" style="background:#0f766e">#0F766E</div><div class="swatch" style="background:#14b8a6">#14B8A6</div><div class="swatch" style="background:#38bdf8">#38BDF8</div></div></div>
+<div class="palette pick"><h3>5. Тетрада <span style="color:#17845a;font-size:11px">— выбрана для CodeFlow</span></h3><p>Четыре оттенка дают выразительные акценты при нейтральной основе.</p><div class="swatches"><div class="swatch" style="background:#0f172a">#0F172A</div><div class="swatch" style="background:#60a5fa">#60A5FA</div><div class="swatch" style="background:#6ee7b7;color:#12382b;text-shadow:none">#6EE7B7</div><div class="swatch" style="background:#c4b5fd;color:#2f2354;text-shadow:none">#C4B5FD</div></div><span class="tag">Использована в приветственном блоке</span></div>
+<div class="palette"><h3>6. Прямоугольная схема</h3><p>Две пары контрастных цветов — для яркого современного проекта.</p><div class="swatches"><div class="swatch" style="background:#7c3aed">#7C3AED</div><div class="swatch" style="background:#f472b6;color:#45152b;text-shadow:none">#F472B6</div><div class="swatch" style="background:#0d9488">#0D9488</div><div class="swatch" style="background:#fbbf24;color:#422b00;text-shadow:none">#FBBF24</div></div></div>
+</div></section>
+</main></body></html>
